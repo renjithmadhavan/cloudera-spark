@@ -133,3 +133,29 @@ for (pair <- namesByPCode.sortByKey().take(5)) {
 }
 
 
+############## DAY 3 #######################
+
+Exercise directory: $DEVSH/exercises/spark-application
+Data files (HDFS): /loudacre/weblogs
+Scala project:
+$DEVSH/exercises/spark-application/countjpgs_project
+Scala classes: stubs.CountJPGs
+solution.CountJPGs
+Python stub: CountJPGs.py
+Python solution:
+$DEVSH/exercises/spark-application/pythonsolution/
+CountJPGs.py
+
+
+cd $DEVSH/exercises/spark-application/countjpgs_project
+spark-submit --class stubs.CountJPGs \
+--master yarn-client \
+--name 'Count JPGs' \
+target/countjpgs-1.0.jar /loudacre/weblogs/*
+
+
+spark-submit --properties-file myspark.conf \
+--class stubs.CountJPGs \
+target/countjpgs-1.0.jar /loudacre/weblogs/*
+
+sudo cp /usr/lib/spark/conf/log4j.properties.template /usr/lib/spark/conf/log4j.properties
